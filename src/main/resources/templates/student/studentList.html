@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>학적부</title>
+<link rel="stylesheet" th:href="@{/css/student.css}" />
+</head>
+<body>
+	<div class="container">
+		<h2>학생 목록</h2>
+		<table class="student_list">
+			<colgroup>
+				<col width="15%" />
+				<col width="20%" />
+				<col width="*" />
+				<col width="20%" />
+				<col width="20%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">순번</th>
+					<th scope="col">이름</th>
+					<th scope="col">전공</th>
+					<th scope="col">이메일</th>
+					<th scope="col">등록일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${#lists.size(list)} > 0" th:each="student : ${list}">
+					<td th:text="${student.studentIdx}"></td>
+					<td class="title">
+						<a href="/student/openStudentDetail.do?studentIdx="
+							th:attrappend="href=${student.studentIdx}"
+							th:text="${student.studentName}"></a>
+					</td>
+					<td th:text="${student.specialty}"></td>
+					<td th:text="${student.email}"></td>
+					<td th:text="${student.registDt}"></td>
+				</tr>
+				<tr th:unless="${#lists.size(list)} > 0">
+					<td colspan="5">조회된 결과가 없습니다.</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/student/openStudentWrite.do" class="btn">등록</a>
+	</div>
+</body>
+</html>

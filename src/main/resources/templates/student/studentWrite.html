@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>학적부</title>
+	<link rel="stylesheet" th:href="@{/css/student.css}" />
+</head>
+<body>
+	<div class="container">
+		<h2>학생 등록</h2>
+		<form action="/student/insertStudent.do" method="POST" id="frm" name="frm">
+			<table class="student_detail">
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="studentName" /></td>
+				</tr>
+				<tr>
+					<td>전공</td>
+					<td><input type="text" name="specialty" /></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+			</table>
+			<input type="submit" id="submit" value="저장" class="btn" />
+		</form>		
+	</div>
+</body>
+</html>
